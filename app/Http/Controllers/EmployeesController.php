@@ -8,59 +8,44 @@ use App\Http\Requests\UpdateemployeesRequest;
 
 class EmployeesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
-    {
-        //
-    }
+{
+    $employees = employees::all();
+    return view('employees.index', compact('employees'));
+}
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+public function create()
+{
+    return view('employees.create');
+}
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreemployeesRequest $request)
-    {
-        //
-    }
+public function store(StoreemployeesRequest $request)
+{
+    $validated = $request->validated();
+    employees::create($validated);
+    return redirect()->route('pemployees.index')->with('success', 'Employee created successfully.');
+}
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(employees $employees)
-    {
-        //
-    }
+public function show(employees $employees)
+{
+    return view('employees.show', compact('employees'));
+}
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(employees $employees)
-    {
-        //
-    }
+public function edit(employees $employees)
+{
+    return view('employees.edit', compact('employees'));
+}
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateemployeesRequest $request, employees $employees)
-    {
-        //
-    }
+public function update(UpdateemployeesRequest $request, employees $employees)
+{
+    $validated = $request->validated();
+    $employees->update($validated);
+    return redirect()->route('pemployees.index')->with('success', 'Employee updated successfully.');
+}
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(employees $employees)
-    {
-        //
-    }
+public function destroy(employees $employees)
+{
+    $employees->delete();
+    return redirect()->route('pemployees.index')->with('success', 'Employee deleted successfully.');
+}
 }
