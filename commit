@@ -4,3 +4,4 @@ Buat model employees
 Buat route-resource pemployees di web.php
 Buat controller EmployeesController menggunakan –resource
 Implementasikan semua method
+Buat tampilan untuk Menampilkan semua data (index), Menambah data (create), Mengedit data (edit), Menampilkan detail produk (show)
