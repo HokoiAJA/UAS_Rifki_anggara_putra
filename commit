@@ -1,3 +1,4 @@
 Buat migration employees sesuai dengan field di atas.
 Jalankan migration dan pastikan tabel tersedia di database.
 Buat model employees
+Buat route-resource pemployees di web.php
